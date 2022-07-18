@@ -1,0 +1,15 @@
+version: '3.8'
+services:
+  mysql:
+    image: mysql:8
+    restart: unless-stopped
+    container_name: mysql
+    env_file: configuration.env
+    volumes:
+      - mysql_data:/var/lib/mysql
+      - ./mysql/my.cnf:/etc/mysql/my.cnf
+    ports:
+      - 3306:3306
+
+volumes:
+  mysql_data: {}
